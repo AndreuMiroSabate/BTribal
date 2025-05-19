@@ -1,0 +1,34 @@
+{
+    "name": "CustomActions",
+    "maps": [
+        {
+            "name": "Recolect",
+            "id": "c10eaa53-b03f-4e0c-b945-ad7de4f12527",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "b783c4a0-e2b9-486c-b1ab-b9b3b63637c8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2ce8dd24-4cd4-4813-ae8a-b655f185c5c2",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
