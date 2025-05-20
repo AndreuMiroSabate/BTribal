@@ -13,6 +13,12 @@ public class GameManager : MonoBehaviour
     public int stoneResources;
     public int foodResources;
 
+    public int woodBase;
+    public int stoneBase;
+    public int foodBase;
+
+    public int brimBrams;
+
     public bool recolecting;
 
     private void Awake()
@@ -20,6 +26,12 @@ public class GameManager : MonoBehaviour
         woodResources = 0;
         stoneResources = 0;
         foodResources = 0;
+
+        foodBase = 0;
+        stoneBase = 0;
+        woodBase = 0;
+        brimBrams = 1;
+
         recolecting = false;
     }
 

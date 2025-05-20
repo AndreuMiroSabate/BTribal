@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
@@ -34,9 +35,26 @@ public class PlayerMovement : MonoBehaviour
         {
             case "BrimBram":
                 collision.gameObject.transform.SetParent(transform, true);
+                Vector3 positonCollision = collision.transform.localPosition;
+                gameObject.GetComponent<BoxCollider>().size += new Vector3(Math.Abs(collision.transform.localPosition.x), Math.Abs(collision.transform.localPosition.y), Math.Abs(collision.transform.localPosition.z));
+                gameObject.GetComponent<BoxCollider>().center = positonCollision *0.5f;
             break;
         }
 
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        switch (other.gameObject.tag)
+        {
+            case "Base":
+                manager.woodBase += manager.woodResources;
+                manager.woodResources = 0;
+                manager.stoneBase += manager.stoneResources;
+                manager.stoneResources = 0;
+                manager.foodBase += manager.foodResources;
+                manager.foodResources = 0;
+                break;
+        }
     }
 
 }

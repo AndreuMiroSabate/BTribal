@@ -9,6 +9,7 @@ TagManager:
   - Selectable
   - Stone
   - Food
+  - Base
   layers:
   - Default
   - TransparentFX
