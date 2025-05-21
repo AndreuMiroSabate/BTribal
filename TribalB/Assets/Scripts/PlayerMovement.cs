@@ -12,7 +12,11 @@ public class PlayerMovement : MonoBehaviour
     [Header("RigidBody")]
     [SerializeField] public Rigidbody rb;
 
+    [Header("Colider")]
+    [SerializeField] public MeshCollider mesh;
+
     private GameManager manager;
+    private Vector3 sizeAfterCollision;
 
     private void Start()
     {
@@ -22,10 +26,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        float moveX = Input.GetAxis("Horizontal");
-        float moveZ = Input.GetAxis("Vertical");
+        float moveX = Input.GetAxis("Vertical");
+        float moveZ = Input.GetAxis("Horizontal");
 
-        rb.velocity = new Vector3(moveX*speed, 0, moveZ*speed);
+        rb.velocity = new Vector3(-moveX*speed, 0, moveZ*speed);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -35,10 +39,12 @@ public class PlayerMovement : MonoBehaviour
         {
             case "BrimBram":
                 collision.gameObject.transform.SetParent(transform, true);
-                Vector3 positonCollision = collision.transform.localPosition;
+
+                //collision.gameObject.GetComponent<BoxCollider>().enabled = false;
                 gameObject.GetComponent<BoxCollider>().size += new Vector3(Math.Abs(collision.transform.localPosition.x), Math.Abs(collision.transform.localPosition.y), Math.Abs(collision.transform.localPosition.z));
-                gameObject.GetComponent<BoxCollider>().center = positonCollision *0.5f;
-            break;
+                sizeAfterCollision = gameObject.GetComponent<BoxCollider>().size;
+                WhereCollide(collision.gameObject);
+                break;
         }
 
     }
@@ -55,6 +61,18 @@ public class PlayerMovement : MonoBehaviour
                 manager.foodResources = 0;
                 break;
         }
+    }
+
+    private void WhereCollide(GameObject collision)
+    {
+        Vector3 newCenter = new Vector3(0,0,0);
+
+        newCenter = gameObject.GetComponent<BoxCollider>().center + collision.transform.localPosition;
+
+        newCenter = newCenter / 2;
+
+        gameObject.GetComponent<BoxCollider>().center  = newCenter;
+
     }
 
 }

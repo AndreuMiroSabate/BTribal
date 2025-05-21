@@ -20,7 +20,7 @@ public class SelectResource : MonoBehaviour
     public void AddOutline(GameObject resorce)
     {
         
-        if(Vector3.Distance(player.rb.position,resorce.transform.position) < 2)
+        if(Vector3.Distance(player.transform.position,resorce.transform.position) < 2 )
         {
             resorce.AddComponent<Outline>();
             resorce.GetComponent<Outline>().OutlineColor = Color.yellow;
