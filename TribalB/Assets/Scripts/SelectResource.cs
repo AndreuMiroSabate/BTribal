@@ -19,20 +19,23 @@ public class SelectResource : MonoBehaviour
 
     public void AddOutline(GameObject resorce)
     {
-        
-        if(Vector3.Distance(player.transform.position,resorce.transform.position) < 2 )
+        if (manager.recolecting == false)
         {
-            resorce.AddComponent<Outline>();
-            resorce.GetComponent<Outline>().OutlineColor = Color.yellow;
-            resorce.GetComponent<Outline>().OutlineWidth = 7.0f;
-            manager.recolecting = true;
-        }
-        else
-        {
-            resorce.AddComponent<Outline>();
-            resorce.GetComponent<Outline>().OutlineColor = Color.grey;
-            resorce.GetComponent<Outline>().OutlineWidth = 7.0f;
-            manager.recolecting = false;
+
+            if (Vector3.Distance(player.transform.position, resorce.transform.position) < 2)
+            {
+                resorce.AddComponent<Outline>();
+                resorce.GetComponent<Outline>().OutlineColor = Color.yellow;
+                resorce.GetComponent<Outline>().OutlineWidth = 7.0f;
+                manager.recolecting = true;
+            }
+            else
+            {
+                resorce.AddComponent<Outline>();
+                resorce.GetComponent<Outline>().OutlineColor = Color.grey;
+                resorce.GetComponent<Outline>().OutlineWidth = 7.0f;
+                manager.recolecting = false;
+            }
         }
     }
 
@@ -66,6 +69,26 @@ public class SelectResource : MonoBehaviour
                 Destroy(resorce);
             }
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "BrimBram")
+        {
+            gameObject.AddComponent<Outline>();
+            gameObject.GetComponent<Outline>().OutlineColor = Color.yellow;
+            gameObject.GetComponent<Outline>().OutlineWidth = 7.0f;
+            manager.recolecting = true;
+        }
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        Outline outline = gameObject.GetComponent<Outline>();
+        if (outline != null)
+        {
+            Destroy(outline);
+        }
+        manager.recolecting = false;
     }
 
 }

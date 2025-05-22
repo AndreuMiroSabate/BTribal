@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class DayNight : MonoBehaviour
 {
-    [Range(0.0f, 24.0f)] public float dayTime = 12;
+    [Range(0.0f, 24.0f)] public float dayTime = 6;
 
     public GameObject sun;
 
@@ -19,13 +19,14 @@ public class DayNight : MonoBehaviour
     private void Update()
     {
         dayTime += Time.deltaTime * (24 / (60 * dayDurationMin));
-        if(dayTime >= 24)
+        if(dayTime < 24)
         {
-            dayTime = 6;
+            SunRotation();
+            sunImage.rectTransform.transform.position = new Vector3(125+86.61f * (dayTime-6), 84.9389f, 0);
+
         }
-        SunRotation();
-       
-        sunImage.rectTransform.transform.position = new Vector3(64.958f * dayTime, 84.9389f, 0);
+
+        
     }
 
     private void SunRotation()
@@ -34,7 +35,7 @@ public class DayNight : MonoBehaviour
 
         sun.transform.localEulerAngles = new Vector3(sunX, 0, 0);
 
-        if(dayTime < 6 || dayTime > 18)
+        if(dayTime < 6 || dayTime > 19)
         {
             sun.GetComponent<Light>().intensity = 0;
         }

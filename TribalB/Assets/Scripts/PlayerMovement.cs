@@ -41,9 +41,9 @@ public class PlayerMovement : MonoBehaviour
                 collision.gameObject.transform.SetParent(transform, true);
 
                 //collision.gameObject.GetComponent<BoxCollider>().enabled = false;
-                gameObject.GetComponent<BoxCollider>().size += new Vector3(Math.Abs(collision.transform.localPosition.x), Math.Abs(collision.transform.localPosition.y), Math.Abs(collision.transform.localPosition.z));
-                sizeAfterCollision = gameObject.GetComponent<BoxCollider>().size;
-                WhereCollide(collision.gameObject);
+                //gameObject.GetComponent<BoxCollider>().size += new Vector3(Math.Abs(collision.transform.localPosition.x), Math.Abs(collision.transform.localPosition.y), Math.Abs(collision.transform.localPosition.z));
+                //sizeAfterCollision = gameObject.GetComponent<BoxCollider>().size;
+                //WhereCollide(collision.gameObject);
                 break;
         }
 
