@@ -16,11 +16,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public MeshCollider mesh;
 
     private GameManager manager;
+    private DayNight dayNight;
     private Vector3 sizeAfterCollision;
+
+    public bool nightTime;
 
     private void Start()
     {
+        nightTime = false;
         manager = FindAnyObjectByType<GameManager>();
+        dayNight = FindAnyObjectByType<DayNight>();
     }
 
 
@@ -59,6 +64,10 @@ public class PlayerMovement : MonoBehaviour
                 manager.stoneResources = 0;
                 manager.foodBase += manager.foodResources;
                 manager.foodResources = 0;
+                if (dayNight.dayTime > 18)
+                {
+                    nightTime = true;
+                }
                 break;
         }
     }
