@@ -18,11 +18,13 @@ public class DayManager : MonoBehaviour
 
     private DayNight night;
     private GameManager gameManager;
+    private ResorcesGenerate generate;
     // Start is called before the first frame update
     void Start()
     {
         night = FindAnyObjectByType<DayNight>();
         gameManager = FindAnyObjectByType<GameManager>();
+        generate = FindAnyObjectByType<ResorcesGenerate>();
         dayN = 1;
         waitDay1 = true;
 
@@ -46,6 +48,8 @@ public class DayManager : MonoBehaviour
     {
         yield return StartCoroutine("FadeToBlack");
         Survivors();
+        generate.EliminateResources();
+        generate.GenerateResourcesRandom();
         night.dayTime = 6;
         yield return StartCoroutine("FadeToGame");
     }

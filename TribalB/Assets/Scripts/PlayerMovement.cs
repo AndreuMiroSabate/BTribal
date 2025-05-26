@@ -17,7 +17,8 @@ public class PlayerMovement : MonoBehaviour
 
     private GameManager manager;
     private DayNight dayNight;
-    DayManager dayManager;
+    private DayManager dayManager;
+    private ResorcesGenerate resorcesGenerate;
     private Vector3 sizeAfterCollision;
 
     public bool nightTime;
@@ -28,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
         manager = FindAnyObjectByType<GameManager>();
         dayNight = FindAnyObjectByType<DayNight>();
         dayManager = FindAnyObjectByType<DayManager>();
+        resorcesGenerate = FindAnyObjectByType<ResorcesGenerate>();
     }
 
 
@@ -48,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
                 collision.gameObject.transform.SetParent(transform, true);
                 if(dayManager.waitDay1 == true)
                 {
+                    resorcesGenerate.GenerateResourcesRandom();
                     dayManager.waitDay1 = false;
                 }
                 manager.brimBrams.Add(collision.gameObject);
