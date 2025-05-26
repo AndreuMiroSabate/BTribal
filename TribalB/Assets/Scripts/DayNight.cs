@@ -7,23 +7,40 @@ using UnityEngine.UI;
 
 public class DayNight : MonoBehaviour
 {
-    [Range(0.0f, 24.0f)] public float dayTime = 6;
+    [Range(0.0f, 24.0f)] public float dayTime = 10;
 
     public GameObject sun;
 
     public float dayDurationMin = 60;
 
     [SerializeField]public RawImage sunImage;
+    [SerializeField] public Image timeLine;
+
+    private DayManager dayManager;
 
     private float sunX;
+
+    private void Start()
+    {
+        dayManager = FindAnyObjectByType<DayManager>();
+    }
     private void Update()
     {
-        dayTime += Time.deltaTime * (24 / (60 * dayDurationMin));
-        if(dayTime < 24)
+        if (dayManager.waitDay1 == false)
+        {
+            dayTime += Time.deltaTime * (24 / (60 * dayDurationMin));
+            if (dayTime < 24)
+            {
+                SunRotation();
+                sunImage.rectTransform.transform.position = new Vector3(125 + 86.61f * (dayTime - 6), 84.9389f, 0);
+                timeLine.gameObject.SetActive(true);
+
+            }
+        }
+        else
         {
             SunRotation();
-            sunImage.rectTransform.transform.position = new Vector3(125+86.61f * (dayTime-6), 84.9389f, 0);
-
+            sunImage.rectTransform.transform.position = new Vector3(125 + 86.61f * (dayTime - 6), 84.9389f, 0);
         }
 
         

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,15 +10,21 @@ public class DayManager : MonoBehaviour
     public int dayN;
     private float fadeDuration = 3.0f;
 
+    public bool waitDay1;
+
     [SerializeField] CanvasGroup fade;
 
     [SerializeField] PlayerMovement player;
 
     private DayNight night;
+    private GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
         night = FindAnyObjectByType<DayNight>();
+        gameManager = FindAnyObjectByType<GameManager>();
+        dayN = 1;
+        waitDay1 = true;
 
     }
 
@@ -38,6 +45,7 @@ public class DayManager : MonoBehaviour
     IEnumerator NextDay()
     {
         yield return StartCoroutine("FadeToBlack");
+        Survivors();
         night.dayTime = 6;
         yield return StartCoroutine("FadeToGame");
     }
@@ -64,5 +72,19 @@ public class DayManager : MonoBehaviour
             yield return null;
         }
         fade.alpha =  0;
+    }
+
+    private void Survivors()
+    {
+        int survivors = gameManager.foodBase - gameManager.brimBrams.Count;
+
+        if (survivors <0)
+        {
+            for(int i = 0; i < Mathf.Abs(survivors); i++)
+            {
+                Destroy(gameManager.brimBrams[gameManager.brimBrams.Count - 1]);
+                gameManager.brimBrams.RemoveAt(gameManager.brimBrams.Count-1);
+            }
+        }
     }
 }

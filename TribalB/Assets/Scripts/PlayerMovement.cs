@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     private GameManager manager;
     private DayNight dayNight;
+    DayManager dayManager;
     private Vector3 sizeAfterCollision;
 
     public bool nightTime;
@@ -26,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
         nightTime = false;
         manager = FindAnyObjectByType<GameManager>();
         dayNight = FindAnyObjectByType<DayNight>();
+        dayManager = FindAnyObjectByType<DayManager>();
     }
 
 
@@ -44,6 +46,11 @@ public class PlayerMovement : MonoBehaviour
         {
             case "BrimBram":
                 collision.gameObject.transform.SetParent(transform, true);
+                if(dayManager.waitDay1 == true)
+                {
+                    dayManager.waitDay1 = false;
+                }
+                manager.brimBrams.Add(collision.gameObject);
 
                 //collision.gameObject.GetComponent<BoxCollider>().enabled = false;
                 //gameObject.GetComponent<BoxCollider>().size += new Vector3(Math.Abs(collision.transform.localPosition.x), Math.Abs(collision.transform.localPosition.y), Math.Abs(collision.transform.localPosition.z));

@@ -140,6 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dayN: 1
+  waitDay1: 0
   fade: {fileID: 154869358}
   player: {fileID: 1561211616}
 --- !u!114 &49862494 stripped
@@ -613,6 +614,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2816511900535002555, guid: 021fb43a2a17778469f665d2ae1ae316, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1561211615}
+    - target: {fileID: 2816511900535002555, guid: 021fb43a2a17778469f665d2ae1ae316, type: 3}
       propertyPath: woodResorcesT
       value: 
       objectReference: {fileID: 1893958125}
@@ -744,6 +749,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f1d1afd771d117409a116dfd906b2b5, type: 3}
+--- !u!114 &1211996252 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3521713647054664904, guid: 408c1bc58a444af49912dfc664e9435f, type: 3}
+  m_PrefabInstance: {fileID: 1846103731179220040}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1235223056
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -753,9 +769,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 580944710182561943, guid: 82deeb4cac4382d44b1ec41402ed7d1b, type: 3}
+      propertyPath: dayTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 580944710182561943, guid: 82deeb4cac4382d44b1ec41402ed7d1b, type: 3}
       propertyPath: sunImage
       value: 
       objectReference: {fileID: 2099762823}
+    - target: {fileID: 580944710182561943, guid: 82deeb4cac4382d44b1ec41402ed7d1b, type: 3}
+      propertyPath: timeLine
+      value: 
+      objectReference: {fileID: 1211996252}
     - target: {fileID: 3319037743667341476, guid: 82deeb4cac4382d44b1ec41402ed7d1b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -832,12 +856,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1561211615 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5693066968411054873, guid: a904c94c38d8d764086a76d0999dffa0, type: 3}
+  m_PrefabInstance: {fileID: 403252573110187213}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1561211616 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5522544151518890051, guid: a904c94c38d8d764086a76d0999dffa0, type: 3}
   m_PrefabInstance: {fileID: 403252573110187213}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1561211615}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43f9ed083f16b9c4e9145936bf8dea3d, type: 3}
@@ -1167,6 +1196,10 @@ PrefabInstance:
     - target: {fileID: 3966626678317049718, guid: 408c1bc58a444af49912dfc664e9435f, type: 3}
       propertyPath: m_Name
       value: CanvasInGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506014823427726720, guid: 408c1bc58a444af49912dfc664e9435f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5274511869840815707, guid: 408c1bc58a444af49912dfc664e9435f, type: 3}
       propertyPath: m_Pivot.x

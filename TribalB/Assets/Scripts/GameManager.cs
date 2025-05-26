@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI stoneResourcesT;
     [SerializeField] TextMeshProUGUI foodResourcesT;
 
+    [SerializeField] GameObject player;
+
+    public List<GameObject> brimBrams;
+
     public int woodResources;
     public int stoneResources;
     public int foodResources;
@@ -16,8 +20,6 @@ public class GameManager : MonoBehaviour
     public int woodBase;
     public int stoneBase;
     public int foodBase;
-
-    public int brimBrams;
 
     public bool recolecting;
 
@@ -30,7 +32,7 @@ public class GameManager : MonoBehaviour
         foodBase = 0;
         stoneBase = 0;
         woodBase = 0;
-        brimBrams = 1;
+        brimBrams.Add(player);
 
         recolecting = false;
     }

@@ -22,6 +22,6 @@ public class BaseManager : MonoBehaviour
     {
         baseWood.text = "Wood: "+ gameManager.woodBase.ToString()+"/5";
         baseStone.text = "Stone: " + gameManager.stoneBase.ToString() + "/5";
-        baseFood.text = "Food: " + gameManager.foodBase.ToString() + "/5";
+        baseFood.text = "Food: " + gameManager.foodBase.ToString() + "/" + gameManager.brimBrams.Count;
     }
 }
