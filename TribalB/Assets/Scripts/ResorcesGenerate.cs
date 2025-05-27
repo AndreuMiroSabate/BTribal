@@ -40,10 +40,10 @@ public class ResorcesGenerate : MonoBehaviour
             // 2. Generar una posición aleatoria dentro del área
             float x = Random.Range(-map.transform.localScale.x, map.transform.localScale.x);
             float z = Random.Range(-map.transform.localScale.z, map.transform.localScale.z);
-            Vector3 position = new Vector3(x, 0, z);
+            Vector3 position = new Vector3(x, 1.3f, z);
 
             // 3. Instanciar
-            GameObject newResource = Instantiate(prefab, position, Quaternion.identity);
+            GameObject newResource = Instantiate(prefab, position, new Quaternion(0,-1f,0,1f));
             instantiateResources.Add(newResource);
         }
     }
