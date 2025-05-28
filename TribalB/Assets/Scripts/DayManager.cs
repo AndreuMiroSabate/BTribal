@@ -15,6 +15,7 @@ public class DayManager : MonoBehaviour
     [SerializeField] CanvasGroup fade;
 
     [SerializeField] PlayerMovement player;
+    [SerializeField] GameObject monster;
 
     private DayNight night;
     private GameManager gameManager;
@@ -27,12 +28,18 @@ public class DayManager : MonoBehaviour
         generate = FindAnyObjectByType<ResorcesGenerate>();
         dayN = 1;
         waitDay1 = true;
+        monster.SetActive(false);
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(night.dayTime >= 19)
+        {
+            MonsterTime();
+        }
+        
         if (player.nightTime == true)
         {
             
@@ -46,8 +53,11 @@ public class DayManager : MonoBehaviour
 
     IEnumerator NextDay()
     {
+        monster.SetActive(false);
         yield return StartCoroutine("FadeToBlack");
         Survivors();
+        monster.gameObject.transform.position = new Vector3(-69, 0, 90);
+        player.gameObject.transform.position = new Vector3(0, 0.5f, 3);
         generate.EliminateResources();
         generate.GenerateResourcesRandom();
         night.dayTime = 6;
@@ -90,5 +100,10 @@ public class DayManager : MonoBehaviour
                 gameManager.brimBrams.RemoveAt(gameManager.brimBrams.Count-1);
             }
         }
+    }
+
+    private void MonsterTime()
+    {
+        monster.SetActive(true);
     }
 }

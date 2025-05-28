@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI foodResourcesT;
 
     [SerializeField] GameObject player;
+    [SerializeField] GameObject montser;
 
     public List<GameObject> brimBrams;
 
@@ -44,4 +45,5 @@ public class GameManager : MonoBehaviour
         stoneResourcesT.text = stoneResources.ToString();
         foodResourcesT.text = foodResources.ToString();
     }
+
 }

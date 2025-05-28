@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 sizeAfterCollision;
 
     public bool nightTime;
+    public bool safe;
 
     private void Start()
     {
@@ -74,11 +75,20 @@ public class PlayerMovement : MonoBehaviour
                 manager.stoneResources = 0;
                 manager.foodBase += manager.foodResources;
                 manager.foodResources = 0;
+                safe = true;
                 if (dayNight.dayTime > 18)
                 {
                     nightTime = true;
                 }
                 break;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.gameObject.tag == "Base")
+        {
+            safe = false;
         }
     }
 
