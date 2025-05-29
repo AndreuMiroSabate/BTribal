@@ -16,6 +16,9 @@ public class DayNight : MonoBehaviour
     [SerializeField]public RawImage sunImage;
     [SerializeField] public Image timeLine;
 
+    [SerializeField] public Texture sunT;
+    [SerializeField] public Texture moonT;
+
     private DayManager dayManager;
 
     private float sunX;
@@ -23,6 +26,7 @@ public class DayNight : MonoBehaviour
     private void Start()
     {
         dayManager = FindAnyObjectByType<DayManager>();
+
     }
     private void Update()
     {
@@ -55,9 +59,11 @@ public class DayNight : MonoBehaviour
         if(dayTime < 6 || dayTime > 19)
         {
             sun.GetComponent<Light>().intensity = 0;
+            sunImage.texture = moonT;
         }
         else
         {
+            sunImage.texture = sunT;
             sun.GetComponent <Light>().intensity = 1;
         }
     }
