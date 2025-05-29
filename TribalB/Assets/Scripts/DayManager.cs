@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class DayManager : MonoBehaviour
 {
@@ -17,9 +18,13 @@ public class DayManager : MonoBehaviour
     [SerializeField] PlayerMovement player;
     [SerializeField] GameObject monster;
 
+    [SerializeField] GameObject BrimBram;
+
     private DayNight night;
     private GameManager gameManager;
     private ResorcesGenerate generate;
+
+    private bool nextDayStarted;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +33,7 @@ public class DayManager : MonoBehaviour
         generate = FindAnyObjectByType<ResorcesGenerate>();
         dayN = 1;
         waitDay1 = true;
+        nextDayStarted = false;
         monster.SetActive(false);
 
     }
@@ -40,12 +46,12 @@ public class DayManager : MonoBehaviour
             MonsterTime();
         }
         
-        if (player.nightTime == true)
+        if (player.nightTime == true && !nextDayStarted)
         {
-            
+            nextDayStarted=true;
             
             StartCoroutine("NextDay");
-            player.nightTime = false;
+            
 
 
         }
@@ -53,15 +59,21 @@ public class DayManager : MonoBehaviour
 
     IEnumerator NextDay()
     {
+        
         monster.SetActive(false);
         yield return StartCoroutine("FadeToBlack");
         Survivors();
+        ImproveBase();
+        gameManager.foodBase -= gameManager.brimBrams.Count;
+        Reproduction();
         monster.gameObject.transform.position = new Vector3(-69, 0, 90);
         player.gameObject.transform.position = new Vector3(0, 0.5f, 3);
         generate.EliminateResources();
         generate.GenerateResourcesRandom();
-        night.dayTime = 6;
+        night.dayTime = 7;
         yield return StartCoroutine("FadeToGame");
+        player.nightTime = false;
+        nextDayStarted = false;
     }
 
     IEnumerator FadeToBlack()
@@ -105,5 +117,36 @@ public class DayManager : MonoBehaviour
     private void MonsterTime()
     {
         monster.SetActive(true);
+    }
+
+    private void ImproveBase()
+    {
+        if(gameManager.necessaryWood <= gameManager.woodBase && gameManager.necessaryStone <= gameManager.stoneBase)
+        {
+            gameManager.woodBase -= gameManager.necessaryWood;
+            gameManager.stoneBase -= gameManager.necessaryStone;
+            gameManager.Base.transform.localScale += new Vector3(5, 0, 5);
+            gameManager.necessaryWood += 5;
+            gameManager.necessaryStone += 5;
+        }
+    }
+
+    private void Reproduction()
+    {
+        for(int i = 1; i <= gameManager.brimBrams.Count; i++)
+        {
+            if (i%2 == 0)
+            {
+                GameObject newResource = Instantiate(BrimBram, player.gameObject.transform.position, new Quaternion(0, 0, 0, 1f));
+                float x = Random.Range(player.gameObject.transform.localPosition.x-0.5f, player.gameObject.transform.localPosition.x + 0.5f);
+                float z = Random.Range(player.gameObject.transform.localPosition.z - 0.5f, player.gameObject.transform.localPosition.z + 0.5f);
+                Vector3 position = new Vector3(x, 0, z);
+
+                newResource.transform.position = position;
+                gameManager.brimBrams.Add(newResource);
+                newResource.transform.SetParent(player.gameObject.transform, false);
+            }
+            
+        }
     }
 }

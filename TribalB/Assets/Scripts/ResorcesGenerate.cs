@@ -27,22 +27,19 @@ public class ResorcesGenerate : MonoBehaviour
         gameManager = gameObject.GetComponent<GameManager>();
     }
 
-    public void GenerateResourcesRandom()
+    public void GenerateResourcesRandom() //Code Given By ChatGPT
     {
         List<string> keys = new List<string>(resources.Keys);
 
         for (int i = 0; i < 500; i++)
         {
-            // 1. Elegir una clave aleatoria
             string selcetedKey = keys[Random.Range(0, keys.Count)];
             GameObject prefab = resources[selcetedKey];
 
-            // 2. Generar una posición aleatoria dentro del área
             float x = Random.Range(-map.transform.localScale.x, map.transform.localScale.x);
             float z = Random.Range(-map.transform.localScale.z, map.transform.localScale.z);
             Vector3 position = new Vector3(x, 1.3f, z);
 
-            // 3. Instanciar
             GameObject newResource = Instantiate(prefab, position, new Quaternion(0,-1f,0,1f));
             instantiateResources.Add(newResource);
         }

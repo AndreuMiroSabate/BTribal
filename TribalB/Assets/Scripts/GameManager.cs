@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] GameObject montser;
 
+    [SerializeField] public GameObject Base;
+
     public List<GameObject> brimBrams;
 
     public int woodResources;
@@ -21,6 +23,9 @@ public class GameManager : MonoBehaviour
     public int woodBase;
     public int stoneBase;
     public int foodBase;
+
+    public int necessaryStone;
+    public int necessaryWood;
 
     public bool recolecting;
 
@@ -34,6 +39,9 @@ public class GameManager : MonoBehaviour
         stoneBase = 0;
         woodBase = 0;
         brimBrams.Add(player);
+
+        necessaryStone = 5;
+        necessaryWood = 5;
 
         recolecting = false;
     }

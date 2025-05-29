@@ -20,8 +20,10 @@ public class BaseManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        baseWood.text = "Wood: "+ gameManager.woodBase.ToString()+"/5";
-        baseStone.text = "Stone: " + gameManager.stoneBase.ToString() + "/5";
+        baseWood.text = "Wood: "+ gameManager.woodBase.ToString()+"/"+ gameManager.necessaryWood;
+        baseStone.text = "Stone: " + gameManager.stoneBase.ToString() + "/" + gameManager.necessaryStone;
         baseFood.text = "Food: " + gameManager.foodBase.ToString() + "/" + gameManager.brimBrams.Count;
     }
+
+    
 }
