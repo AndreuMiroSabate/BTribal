@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.UIElements;
+using TMPro;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -15,6 +17,9 @@ public class PlayerMovement : MonoBehaviour
     [Header("Colider")]
     [SerializeField] public MeshCollider mesh;
 
+    [Header("WASD")]
+    [SerializeField] public RawImage wasd;
+
     private GameManager manager;
     private DayNight dayNight;
     private DayManager dayManager;
@@ -23,6 +28,9 @@ public class PlayerMovement : MonoBehaviour
 
     public bool nightTime;
     public bool safe;
+    private bool moved;
+
+    private Vector3 StartPosition;
 
     private void Start()
     {
@@ -31,11 +39,19 @@ public class PlayerMovement : MonoBehaviour
         dayNight = FindAnyObjectByType<DayNight>();
         dayManager = FindAnyObjectByType<DayManager>();
         resorcesGenerate = FindAnyObjectByType<ResorcesGenerate>();
+        StartPosition = gameObject.transform.position;
+        StartCoroutine("StartMoving");
+        moved = false;
     }
 
 
     void Update()
     {
+        if (!moved)
+        {
+            StartCoroutine("StartMoving");
+        }
+        
         float moveX = Input.GetAxis("Vertical");
         float moveZ = Input.GetAxis("Horizontal");
 
@@ -102,6 +118,20 @@ public class PlayerMovement : MonoBehaviour
 
         gameObject.GetComponent<BoxCollider>().center  = newCenter;
 
+    }
+
+    private IEnumerator StartMoving()
+    {
+        yield return new WaitForSeconds(5f);
+        if(StartPosition == gameObject.transform.position)
+        {
+            wasd.color += new Color(0,0,0,0.01f);
+        }
+        else
+        {
+            moved = true;
+            wasd.color = new Color(0, 0, 0, 0);
+        }
     }
 
 }
