@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using CodeMonkey.Utils;
 using Unity.VisualScripting;
+using UnityEngine.UI;
 
 //Original code by Code Monkey: https://www.youtube.com/watch?v=dHzeHh-3bp4
 
@@ -12,16 +13,21 @@ public class ShowBaseDirection : MonoBehaviour
     [SerializeField] GameObject PointerImage;
     [SerializeField] GameObject PointerBack;
 
+    [SerializeField] Animator Animator;
+
     [SerializeField] private Camera uiCamera;
     private Vector3 targetPosition;
     private RectTransform pointerRectTransfrom1;
     private RectTransform pointerRectTransfrom2;
+
+    private DayNight dayNight;
 
     private void Awake()
     {
         targetPosition = Base.transform.localPosition;
         pointerRectTransfrom1 = transform.Find("White").GetComponent<RectTransform>();
         pointerRectTransfrom2 = transform.Find("BaseImage").GetComponent<RectTransform>();
+        dayNight = FindAnyObjectByType<DayNight>();
     }
 
     private void Update()
@@ -63,6 +69,17 @@ public class ShowBaseDirection : MonoBehaviour
             pointerRectTransfrom1.localPosition = new Vector3(pointerRectTransfrom1.localPosition.x, pointerRectTransfrom1.localPosition.y, 0f);
             pointerRectTransfrom2.localPosition = new Vector3(pointerRectTransfrom2.localPosition.x, pointerRectTransfrom2.localPosition.y, 0f);
 
+            if(dayNight.dayTime >= 18)
+            {
+                PointerBack.GetComponent<RawImage>().color = Color.red;
+                Animator.SetBool("IsNight",true);
+            }
+            else
+            {
+                PointerBack.GetComponent<RawImage>().color = Color.white;
+                Animator.SetBool("IsNight", false);
+            }
+
         }
         else
         {
@@ -71,4 +88,5 @@ public class ShowBaseDirection : MonoBehaviour
         }
 
     }
+
 }

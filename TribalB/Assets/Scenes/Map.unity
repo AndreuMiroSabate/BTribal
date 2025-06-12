@@ -387,7 +387,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6284872057033592581, guid: f1aa25359da2066418762caa5326bc70, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 15.93
+      value: 21.42
       objectReference: {fileID: 0}
     - target: {fileID: 6284872057033592581, guid: f1aa25359da2066418762caa5326bc70, type: 3}
       propertyPath: m_LocalRotation.w
@@ -568,7 +568,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5456145459785489786, guid: e0c392fe373a44b439130bdc38053e56, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 19.254683
+      value: 29.01
       objectReference: {fileID: 0}
     - target: {fileID: 5456145459785489786, guid: e0c392fe373a44b439130bdc38053e56, type: 3}
       propertyPath: m_LocalRotation.w
@@ -788,7 +788,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1182697815064375481, guid: d1245481466292a4f984db350e3bba6e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 39.93
+      value: 45.747787
       objectReference: {fileID: 0}
     - target: {fileID: 1182697815064375481, guid: d1245481466292a4f984db350e3bba6e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -994,7 +994,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1182697815064375481, guid: d1245481466292a4f984db350e3bba6e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 35.682213
+      value: 41.5
       objectReference: {fileID: 0}
     - target: {fileID: 1182697815064375481, guid: d1245481466292a4f984db350e3bba6e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1251,6 +1251,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1330695342}
   - component: {fileID: 1330695343}
+  - component: {fileID: 1330695344}
   m_Layer: 5
   m_Name: Window_Pointer
   m_TagString: Untagged
@@ -1294,7 +1295,29 @@ MonoBehaviour:
   Base: {fileID: 293754389}
   PointerImage: {fileID: 673797177}
   PointerBack: {fileID: 774184144}
+  Animator: {fileID: 1330695344}
   uiCamera: {fileID: 627014846}
+--- !u!95 &1330695344
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330695341}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4cd0329f0a29b6842ab22feddfe99a5b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1534079996 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7675675851047936527, guid: 408c1bc58a444af49912dfc664e9435f, type: 3}
@@ -1680,6 +1703,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5522544151518890051, guid: a904c94c38d8d764086a76d0999dffa0, type: 3}
+      propertyPath: wasd
+      value: 
+      objectReference: {fileID: 92211613}
     - target: {fileID: 5693066968411054873, guid: a904c94c38d8d764086a76d0999dffa0, type: 3}
       propertyPath: m_Name
       value: Player
