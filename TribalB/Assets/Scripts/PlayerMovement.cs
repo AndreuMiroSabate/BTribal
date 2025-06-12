@@ -96,6 +96,10 @@ public class PlayerMovement : MonoBehaviour
                 {
                     nightTime = true;
                 }
+                if (manager.firstRecources == true)
+                {
+                    manager.firstRecources = false;
+                }
                 break;
         }
     }

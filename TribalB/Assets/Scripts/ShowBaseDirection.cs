@@ -22,11 +22,14 @@ public class ShowBaseDirection : MonoBehaviour
 
     private DayNight dayNight;
 
+    private GameManager gameManager;
+
     private void Awake()
     {
         targetPosition = Base.transform.localPosition;
         pointerRectTransfrom1 = transform.Find("White").GetComponent<RectTransform>();
         pointerRectTransfrom2 = transform.Find("BaseImage").GetComponent<RectTransform>();
+        gameManager = FindAnyObjectByType<GameManager>();
         dayNight = FindAnyObjectByType<DayNight>();
     }
 
@@ -78,6 +81,10 @@ public class ShowBaseDirection : MonoBehaviour
             {
                 PointerBack.GetComponent<RawImage>().color = Color.white;
                 Animator.SetBool("IsNight", false);
+            }
+            if(gameManager.firstRecources == true)
+            {
+                Animator.SetBool("IsNight", true);
             }
 
         }

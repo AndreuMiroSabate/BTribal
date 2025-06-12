@@ -9,11 +9,14 @@ public class SelectResource : MonoBehaviour
 
     public bool recolecatble;
 
+    private int resourcesRecolected1;
+
     private void Start()
     {
         manager = FindAnyObjectByType<GameManager>();
         player = FindAnyObjectByType<PlayerMovement>();
         recolecatble = false;
+        resourcesRecolected1 = 0;
     }
 
 
@@ -68,6 +71,16 @@ public class SelectResource : MonoBehaviour
                 manager.foodResources += 1;
                 Destroy(resorce);
             }
+            if(manager.resourcesrecoleted < 3)
+            {
+                manager.resourcesrecoleted += 1;
+                if(manager.resourcesrecoleted >= 3)
+                {
+                    manager.firstRecources = true;
+                }
+                
+            }
+            
         }
     }
 

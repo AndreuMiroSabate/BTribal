@@ -29,11 +29,18 @@ public class GameManager : MonoBehaviour
 
     public bool recolecting;
 
+    public bool firstRecources;
+    public int resourcesrecoleted;
+
     private void Awake()
     {
         woodResources = 0;
         stoneResources = 0;
         foodResources = 0;
+
+        resourcesrecoleted = 0;
+
+        firstRecources = false;
 
         foodBase = 0;
         stoneBase = 0;

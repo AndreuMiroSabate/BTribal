@@ -23,6 +23,7 @@ public class DayManager : MonoBehaviour
     private DayNight night;
     private GameManager gameManager;
     private ResorcesGenerate generate;
+    private BrimBramGenerator generator;
 
     private bool nextDayStarted;
     // Start is called before the first frame update
@@ -31,6 +32,7 @@ public class DayManager : MonoBehaviour
         night = FindAnyObjectByType<DayNight>();
         gameManager = FindAnyObjectByType<GameManager>();
         generate = FindAnyObjectByType<ResorcesGenerate>();
+        generator = FindAnyObjectByType<BrimBramGenerator>();
         dayN = 1;
         waitDay1 = true;
         nextDayStarted = false;
@@ -70,6 +72,9 @@ public class DayManager : MonoBehaviour
         player.gameObject.transform.position = new Vector3(0, 0.5f, 3);
         generate.EliminateResources();
         generate.GenerateResourcesRandom();
+        generator.EliminateBrimBrams();
+        generator.GenerateBrimBramsRandom();
+
         night.dayTime = 7;
         yield return StartCoroutine("FadeToGame");
         player.nightTime = false;
