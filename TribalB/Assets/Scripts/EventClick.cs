@@ -9,6 +9,11 @@ public class EventClick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
 {
     private SelectResource selectResource;
 
+    [SerializeField] Texture2D hacha;
+    [SerializeField] Texture2D pico;
+    [SerializeField] Texture2D hazada;
+    [SerializeField] Texture2D defoult;
+
     private void Awake()
     {
       selectResource = GetComponent<SelectResource>();
@@ -26,14 +31,31 @@ public class EventClick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             selectResource.Recolect(gameObject);
+            Cursor.SetCursor(defoult, new Vector2(0, 0), CursorMode.Auto);
         }
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
         selectResource.AddOutline(gameObject);
+        switch (gameObject.tag)
+        {
+            case "Tree":
+                Cursor.SetCursor(hacha, new Vector2(0, 0), CursorMode.Auto);
+                break;
+            case "Stone":
+                Cursor.SetCursor(pico, new Vector2(0, 0), CursorMode.Auto);
+                break;
+            case "Food":
+                Cursor.SetCursor(hazada, new Vector2(0, 0), CursorMode.Auto);
+                break;
+            default:
+                Cursor.SetCursor(defoult, new Vector2(0, 0), CursorMode.Auto);
+                break;
+        }
     }
     public void OnPointerExit(PointerEventData eventData)
     {
         selectResource.RemoveOutline(gameObject);
+        Cursor.SetCursor(defoult, new Vector2(0, 0), CursorMode.Auto);
     }
 }

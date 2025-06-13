@@ -60,6 +60,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92cd81c3314aa174ead8f098533b2fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hacha: {fileID: 2800000, guid: 6adbd06e3374a83439a0e4898bd19e71, type: 3}
+  pico: {fileID: 2800000, guid: 398678c6e4791684caa9a617fe2eca9d, type: 3}
+  hazada: {fileID: 2800000, guid: 2d15b581460a2f145896abfd4dbc0ea5, type: 3}
+  defoult: {fileID: 2800000, guid: 38e58c267d08a30498afd0db75ea43ff, type: 3}
 --- !u!212 &2952032434805551972
 SpriteRenderer:
   m_ObjectHideFlags: 0
