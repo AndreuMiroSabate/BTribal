@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class BrimBramGenerator : MonoBehaviour
 {
@@ -34,6 +35,15 @@ public class BrimBramGenerator : MonoBehaviour
             GameObject newBrimBram = Instantiate(BrimBram, position, new Quaternion(0, -1f, 0, 1f));
             instantiateBrimsBrams.Add(newBrimBram);
         }
+    }
+
+    public void GenerateBrimBrams()
+    {
+        Vector3 position1 = new Vector3(0.46235f, 0.82f, 24.27f);
+        Vector3 position2 = new Vector3(4.45f, 0.82f, 28.51779f);
+        GameObject newBrimBram1 = Instantiate(BrimBram, position1, new Quaternion(0, -1f, 0, 1f));
+        GameObject newBrimBram2 = Instantiate(BrimBram, position2, new Quaternion(0, -1f, 0, 1f));
+        gameManager.baseTutorial = false;
     }
 
     public void EliminateBrimBrams()

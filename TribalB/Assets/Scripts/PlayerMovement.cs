@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     private DayNight dayNight;
     private DayManager dayManager;
     private ResorcesGenerate resorcesGenerate;
+    private BrimBramGenerator brimBramGenerator;
     private Vector3 sizeAfterCollision;
 
     public bool nightTime;
@@ -39,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
         dayNight = FindAnyObjectByType<DayNight>();
         dayManager = FindAnyObjectByType<DayManager>();
         resorcesGenerate = FindAnyObjectByType<ResorcesGenerate>();
+        brimBramGenerator = FindAnyObjectByType<BrimBramGenerator>();
         StartPosition = gameObject.transform.position;
         StartCoroutine("StartMoving");
         moved = false;
@@ -99,6 +101,8 @@ public class PlayerMovement : MonoBehaviour
                 if (manager.firstRecources == true)
                 {
                     manager.firstRecources = false;
+                    brimBramGenerator.GenerateBrimBrams();
+
                 }
                 break;
         }

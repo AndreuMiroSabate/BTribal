@@ -32,6 +32,8 @@ public class GameManager : MonoBehaviour
     public bool firstRecources;
     public int resourcesrecoleted;
 
+    public bool baseTutorial;
+
     private void Awake()
     {
         woodResources = 0;
@@ -51,6 +53,8 @@ public class GameManager : MonoBehaviour
         necessaryWood = 5;
 
         recolecting = false;
+
+        baseTutorial = false;
     }
 
     // Update is called once per frame

@@ -803,7 +803,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1182697815064375481, guid: d1245481466292a4f984db350e3bba6e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 45.747787
+      value: 28.517788
       objectReference: {fileID: 0}
     - target: {fileID: 1182697815064375481, guid: d1245481466292a4f984db350e3bba6e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -836,6 +836,10 @@ PrefabInstance:
     - target: {fileID: 3139299901024116474, guid: d1245481466292a4f984db350e3bba6e, type: 3}
       propertyPath: m_Name
       value: BrimBram (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3139299901024116474, guid: d1245481466292a4f984db350e3bba6e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1009,7 +1013,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1182697815064375481, guid: d1245481466292a4f984db350e3bba6e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 41.5
+      value: 24.27
       objectReference: {fileID: 0}
     - target: {fileID: 1182697815064375481, guid: d1245481466292a4f984db350e3bba6e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1042,6 +1046,10 @@ PrefabInstance:
     - target: {fileID: 3139299901024116474, guid: d1245481466292a4f984db350e3bba6e, type: 3}
       propertyPath: m_Name
       value: BrimBram
+      objectReference: {fileID: 0}
+    - target: {fileID: 3139299901024116474, guid: d1245481466292a4f984db350e3bba6e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1131,6 +1139,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5332567703736850032, guid: 021fb43a2a17778469f665d2ae1ae316, type: 3}
+      propertyPath: pico
+      value: 
+      objectReference: {fileID: 2800000, guid: 398678c6e4791684caa9a617fe2eca9d, type: 3}
+    - target: {fileID: 5332567703736850032, guid: 021fb43a2a17778469f665d2ae1ae316, type: 3}
+      propertyPath: hacha
+      value: 
+      objectReference: {fileID: 2800000, guid: 6adbd06e3374a83439a0e4898bd19e71, type: 3}
+    - target: {fileID: 5332567703736850032, guid: 021fb43a2a17778469f665d2ae1ae316, type: 3}
+      propertyPath: hazada
+      value: 
+      objectReference: {fileID: 2800000, guid: 2d15b581460a2f145896abfd4dbc0ea5, type: 3}
+    - target: {fileID: 5332567703736850032, guid: 021fb43a2a17778469f665d2ae1ae316, type: 3}
+      propertyPath: defoult
+      value: 
+      objectReference: {fileID: 2800000, guid: 38e58c267d08a30498afd0db75ea43ff, type: 3}
     - target: {fileID: 7692675335395575736, guid: 021fb43a2a17778469f665d2ae1ae316, type: 3}
       propertyPath: m_Name
       value: Game_Manager

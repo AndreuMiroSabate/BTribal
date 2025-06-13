@@ -9,14 +9,11 @@ public class SelectResource : MonoBehaviour
 
     public bool recolecatble;
 
-    private int resourcesRecolected1;
-
     private void Start()
     {
         manager = FindAnyObjectByType<GameManager>();
         player = FindAnyObjectByType<PlayerMovement>();
         recolecatble = false;
-        resourcesRecolected1 = 0;
     }
 
 
@@ -40,6 +37,7 @@ public class SelectResource : MonoBehaviour
                 manager.recolecting = false;
             }
         }
+
     }
 
     public void RemoveOutline(GameObject resorce)
@@ -50,6 +48,7 @@ public class SelectResource : MonoBehaviour
             Destroy(outline);
         }
         manager.recolecting = false;
+        
     }
 
     public void Recolect(GameObject resorce)
@@ -74,7 +73,7 @@ public class SelectResource : MonoBehaviour
             if(manager.resourcesrecoleted < 3)
             {
                 manager.resourcesrecoleted += 1;
-                if(manager.resourcesrecoleted >= 3)
+                if(manager.resourcesrecoleted == 3)
                 {
                     manager.firstRecources = true;
                 }
