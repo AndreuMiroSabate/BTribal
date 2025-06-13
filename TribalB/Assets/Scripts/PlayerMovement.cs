@@ -20,6 +20,9 @@ public class PlayerMovement : MonoBehaviour
     [Header("WASD")]
     [SerializeField] public RawImage wasd;
 
+    [Header("RightClick")]
+    [SerializeField] public RawImage rClick;
+
     private GameManager manager;
     private DayNight dayNight;
     private DayManager dayManager;
@@ -30,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
     public bool nightTime;
     public bool safe;
     private bool moved;
+    private bool lclickBool;
 
     private Vector3 StartPosition;
 
@@ -44,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
         StartPosition = gameObject.transform.position;
         StartCoroutine("StartMoving");
         moved = false;
+        lclickBool = false;
     }
 
 
@@ -52,6 +57,10 @@ public class PlayerMovement : MonoBehaviour
         if (!moved)
         {
             StartCoroutine("StartMoving");
+        }
+        else
+        {
+            StartCoroutine("RecolectWarning");
         }
         
         float moveX = Input.GetAxis("Vertical");
@@ -133,12 +142,35 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(5f);
         if(StartPosition == gameObject.transform.position)
         {
+            
             wasd.color += new Color(0,0,0,0.01f);
         }
         else
         {
-            moved = true;
+            
             wasd.color = new Color(0, 0, 0, 0);
+            moved = true;
+            
+            
+        }
+    }
+
+    private IEnumerator RecolectWarning()
+    {
+        yield return new WaitForSeconds(5f);
+        if (manager.stoneResources == 0 && manager.woodResources == 0 && manager.foodResources == 0)
+        {
+            if (lclickBool == false)
+            {
+                rClick.color += new Color(0, 0, 0, 0.01f);
+            }
+                
+        }
+        else
+        {
+            rClick.color = new Color(0, 0, 0, 0);
+            lclickBool = true;
+
         }
     }
 

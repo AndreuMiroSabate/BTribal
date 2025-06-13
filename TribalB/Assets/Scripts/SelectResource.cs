@@ -58,6 +58,7 @@ public class SelectResource : MonoBehaviour
             if (resorce.CompareTag("Tree"))
             {
                 manager.woodResources += 1;
+                
                 Destroy(resorce);
             }
             if (resorce.CompareTag("Stone"))
