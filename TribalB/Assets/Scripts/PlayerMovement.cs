@@ -23,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("RightClick")]
     [SerializeField] public RawImage rClick;
 
+    [SerializeField] public GameObject hey;
+
     private GameManager manager;
     private DayNight dayNight;
     private DayManager dayManager;
@@ -36,6 +38,8 @@ public class PlayerMovement : MonoBehaviour
     private bool lclickBool;
 
     private Vector3 StartPosition;
+
+
 
     private void Start()
     {
@@ -110,7 +114,8 @@ public class PlayerMovement : MonoBehaviour
                 if (manager.firstRecources == true)
                 {
                     manager.firstRecources = false;
-                    brimBramGenerator.GenerateBrimBrams();
+
+                    heyNeighbour();
 
                 }
                 break;
@@ -172,6 +177,13 @@ public class PlayerMovement : MonoBehaviour
             lclickBool = true;
 
         }
+    }
+
+    private void heyNeighbour()
+    {
+        hey.SetActive(true);
+
+        brimBramGenerator.GenerateBrimBrams();
     }
 
 }

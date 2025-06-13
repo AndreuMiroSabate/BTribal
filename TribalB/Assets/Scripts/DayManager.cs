@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
@@ -57,6 +58,10 @@ public class DayManager : MonoBehaviour
 
 
         }
+        if (dayN >= 4)
+        {
+            SceneManager.LoadScene("Forms");
+        }
     }
 
     IEnumerator NextDay()
@@ -67,7 +72,6 @@ public class DayManager : MonoBehaviour
         Survivors();
         ImproveBase();
         gameManager.foodBase -= gameManager.brimBrams.Count;
-        Reproduction();
         monster.gameObject.transform.position = new Vector3(-69, 0, 90);
         player.gameObject.transform.position = new Vector3(0, 0.5f, 3);
         generate.EliminateResources();
@@ -116,6 +120,10 @@ public class DayManager : MonoBehaviour
                 Destroy(gameManager.brimBrams[gameManager.brimBrams.Count - 1]);
                 gameManager.brimBrams.RemoveAt(gameManager.brimBrams.Count-1);
             }
+        }
+        else
+        {
+            Reproduction();
         }
     }
 
