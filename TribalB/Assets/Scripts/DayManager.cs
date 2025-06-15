@@ -81,7 +81,7 @@ public class DayManager : MonoBehaviour
         Survivors();
         ImproveBase();
         gameManager.foodBase -= gameManager.brimBrams.Count;
-        monster.gameObject.transform.position = new Vector3(-69, 0, 90);
+        monster.gameObject.transform.position = new Vector3(-69, 1.47f, 90);
         player.gameObject.transform.position = new Vector3(0, 0.5f, 3);
         generate.EliminateResources();
         generate.GenerateResourcesRandom();

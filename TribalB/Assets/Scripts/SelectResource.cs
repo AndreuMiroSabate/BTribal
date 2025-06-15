@@ -116,7 +116,7 @@ public class SelectResource : MonoBehaviour
     IEnumerator DestroyObject(GameObject resource)
     {
         RemoveOutline(resource);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         Destroy(resource);
     }
 

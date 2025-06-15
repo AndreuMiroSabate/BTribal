@@ -27,7 +27,7 @@ public class Monster : MonoBehaviour
     {
         if(dayManager.dayTime >= 19 && player.safe == false)
         {
-            gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, player.gameObject.transform.position, 0.02f);
+            gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, player.gameObject.transform.position, 0.1f);
         }
     }
 
