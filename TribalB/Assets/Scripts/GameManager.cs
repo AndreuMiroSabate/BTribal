@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -63,6 +64,11 @@ public class GameManager : MonoBehaviour
         woodResorcesT.text = woodResources.ToString();
         stoneResourcesT.text = stoneResources.ToString();
         foodResourcesT.text = foodResources.ToString();
+
+        if (brimBrams.Count <= 0 )
+        {
+            SceneManager.LoadScene("Forms");
+        }
     }
 
 }

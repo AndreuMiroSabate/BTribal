@@ -8,6 +8,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2618402068383480558, guid: f1aa25359da2066418762caa5326bc70, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9cfe22a40d5ae6a448b9f0fde47b7242, type: 3}
+    - target: {fileID: 2618402068383480558, guid: f1aa25359da2066418762caa5326bc70, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3132661264892045899, guid: f1aa25359da2066418762caa5326bc70, type: 3}
+      propertyPath: mine
+      value: 
+      objectReference: {fileID: 7364187576272957076, guid: d213cabb0171842428b62bec74189c56, type: 3}
+    - target: {fileID: 3132661264892045899, guid: f1aa25359da2066418762caa5326bc70, type: 3}
+      propertyPath: grabFood
+      value: 
+      objectReference: {fileID: 1749458284484594972, guid: fd7c97e64f1380e43b8e219253aed4e9, type: 3}
     - target: {fileID: 4272483163716708642, guid: f1aa25359da2066418762caa5326bc70, type: 3}
       propertyPath: m_Name
       value: Food

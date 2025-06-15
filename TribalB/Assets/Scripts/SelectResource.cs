@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -8,6 +9,10 @@ public class SelectResource : MonoBehaviour
     private PlayerMovement player;
 
     public bool recolecatble;
+
+    [SerializeField] AudioSource treeSound;
+    [SerializeField] AudioSource stoneSound;
+    [SerializeField] AudioSource FoodSound;
 
     private void Start()
     {
@@ -57,19 +62,24 @@ public class SelectResource : MonoBehaviour
         {
             if (resorce.CompareTag("Tree"))
             {
+                treeSound.Play();
                 manager.woodResources += 1;
+                StartCoroutine(DestroyObject(resorce));
                 
-                Destroy(resorce);
             }
             if (resorce.CompareTag("Stone"))
             {
+                stoneSound.Play();
                 manager.stoneResources += 1;
-                Destroy(resorce);
+                StartCoroutine(DestroyObject(resorce));
+                
             }
             if (resorce.CompareTag("Food"))
             {
+                FoodSound.Play();
                 manager.foodResources += 1;
-                Destroy(resorce);
+                StartCoroutine(DestroyObject(resorce));
+                
             }
             if(manager.resourcesrecoleted < 3)
             {
@@ -102,6 +112,12 @@ public class SelectResource : MonoBehaviour
             Destroy(outline);
         }
         manager.recolecting = false;
+    }
+    IEnumerator DestroyObject(GameObject resource)
+    {
+        RemoveOutline(resource);
+        yield return new WaitForSeconds(1.5f);
+        Destroy(resource);
     }
 
 }

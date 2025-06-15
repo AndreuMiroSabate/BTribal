@@ -19,13 +19,17 @@ public class DayNight : MonoBehaviour
     [SerializeField] public Texture sunT;
     [SerializeField] public Texture moonT;
 
+    [SerializeField] AudioSource nightTimeSound;
+
     private DayManager dayManager;
 
     private float sunX;
+    private bool FirstTimeNight;
 
     private void Start()
     {
         dayManager = FindAnyObjectByType<DayManager>();
+        FirstTimeNight = true;
 
     }
     private void Update()
@@ -59,10 +63,16 @@ public class DayNight : MonoBehaviour
         if(dayTime < 6 || dayTime > 19)
         {
             sun.GetComponent<Light>().intensity = 0;
+            if(FirstTimeNight == true)
+            {
+                nightTimeSound.Play();
+                FirstTimeNight = false;
+            }
             sunImage.texture = moonT;
         }
         else
         {
+            FirstTimeNight = true;
             sunImage.texture = sunT;
             sun.GetComponent <Light>().intensity = 1;
         }

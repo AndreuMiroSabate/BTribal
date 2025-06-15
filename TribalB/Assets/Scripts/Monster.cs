@@ -10,6 +10,8 @@ public class Monster : MonoBehaviour
     private GameManager gameManager;
     private PlayerMovement player;
 
+    [SerializeField] AudioSource crunch;
+
     private Vector3 directionMonster;
     void Start()
     {
@@ -35,6 +37,7 @@ public class Monster : MonoBehaviour
         if (other.gameObject.tag == "BrimBram")
         {
             StartCoroutine("afterEating");
+            crunch.Play();
             Destroy(gameManager.brimBrams[gameManager.brimBrams.Count - 1]);
             gameManager.brimBrams.RemoveAt(gameManager.brimBrams.Count - 1);
         }

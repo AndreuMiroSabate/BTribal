@@ -21,6 +21,10 @@ public class DayManager : MonoBehaviour
 
     [SerializeField] GameObject BrimBram;
 
+    [SerializeField] AudioSource sleep;
+
+    [SerializeField] GameObject hearts;
+
     private DayNight night;
     private GameManager gameManager;
     private ResorcesGenerate generate;
@@ -68,6 +72,11 @@ public class DayManager : MonoBehaviour
     {
         
         monster.SetActive(false);
+        sleep.Play();
+        if(gameManager.brimBrams.Count >= 2 && gameManager.foodBase >= gameManager.brimBrams.Count)
+        {
+            hearts.SetActive(true);
+        }
         yield return StartCoroutine("FadeToBlack");
         Survivors();
         ImproveBase();
@@ -99,6 +108,7 @@ public class DayManager : MonoBehaviour
 
     IEnumerator FadeToGame()
     {
+        hearts.SetActive(false);
         float t = 0;
         while (t < fadeDuration)
         {
@@ -146,6 +156,7 @@ public class DayManager : MonoBehaviour
 
     private void Reproduction()
     {
+        
         for(int i = 1; i <= gameManager.brimBrams.Count; i++)
         {
             if (i%2 == 0)

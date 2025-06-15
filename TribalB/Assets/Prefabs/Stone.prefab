@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Stone
       objectReference: {fileID: 0}
+    - target: {fileID: 4240133304495501625, guid: 9f1d1afd771d117409a116dfd906b2b5, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: bd89cfeb9dc949d48a3278d501f4c9ec, type: 3}
     - target: {fileID: 5312503592209401042, guid: 9f1d1afd771d117409a116dfd906b2b5, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.46

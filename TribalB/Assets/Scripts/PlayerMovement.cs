@@ -25,6 +25,10 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] public GameObject hey;
 
+    [SerializeField] public AudioSource beFriends;
+    [SerializeField] public AudioSource leaveResources;
+    [SerializeField] public AudioSource heyAudio;
+
     private GameManager manager;
     private DayNight dayNight;
     private DayManager dayManager;
@@ -86,6 +90,7 @@ public class PlayerMovement : MonoBehaviour
                     dayManager.waitDay1 = false;
                 }
                 manager.brimBrams.Add(collision.gameObject);
+                beFriends.Play();
 
                 //collision.gameObject.GetComponent<BoxCollider>().enabled = false;
                 //gameObject.GetComponent<BoxCollider>().size += new Vector3(Math.Abs(collision.transform.localPosition.x), Math.Abs(collision.transform.localPosition.y), Math.Abs(collision.transform.localPosition.z));
@@ -106,6 +111,7 @@ public class PlayerMovement : MonoBehaviour
                 manager.stoneResources = 0;
                 manager.foodBase += manager.foodResources;
                 manager.foodResources = 0;
+                leaveResources.Play();
                 safe = true;
                 if (dayNight.dayTime > 18)
                 {
@@ -182,6 +188,7 @@ public class PlayerMovement : MonoBehaviour
     private void heyNeighbour()
     {
         hey.SetActive(true);
+        heyAudio.Play();
 
         brimBramGenerator.GenerateBrimBrams();
     }
